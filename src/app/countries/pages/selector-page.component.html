@@ -1,0 +1,32 @@
+<h1 class="mt-3">Selectors</h1>
+<hr>
+
+<form [formGroup]="myform">
+    <!-- Region -->
+    <div class="row mb-3">
+        <div class="col">
+            <label for="" class="form-label">Region:</label>
+            <select formControlName="region" name="region" id="region" class="form-control">
+                <option value="">--- Select region ---</option>
+                <option *ngFor="let region of regions" [value]="region">{{ region }}</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- countries -->
+    <div class="row mb-3" *ngIf="countriesByRegion.length > 0">
+        <div class="col">
+            <label for="" class="form-label">Country:</label>
+            <select formControlName="region" name="region" id="region" class="form-control">
+                <option value="">---Select country---</option>
+                <option *ngFor="let country of countriesByRegion" [value]="country.cca3">{{ country.name }}</option>
+            </select>
+        </div>
+    </div>
+</form>
+
+<h3>Form</h3>
+<code>
+    {{ myform.value | json }}
+</code>
+<p>Is form valid: {{ myform.valid }}</p>
